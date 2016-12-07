@@ -5,6 +5,7 @@ var Node = require('./node.js');
 class BasicEvent extends Node {
 
     constructor(expression) {
+        super();
         this.expression = expression;
     }
 

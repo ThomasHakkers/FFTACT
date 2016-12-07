@@ -22,13 +22,12 @@ class And extends Node {
      */
     calculate(t) {
         // TODO Recursively do calculations for each child.
-        // TODO Fix array.reduce.
-        var result = ", then I went to the cinema and ";
-        //return ', then I went to the cinema and ' + this.childs.reduce((a,b) => {console.log(a); return 5}, "");
-        this.childs.forEach(c =>{
-            result += c.calculate(t);
-        });
-        return result;
+        return ', then I went to the cinema and ' +
+            this.childs
+                // Map to calculate
+                .map(c => c.calculate(t))
+                // Add them all together
+                .reduce((a,b) => a + b, "");
     }
 }
 
