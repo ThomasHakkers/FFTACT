@@ -1,0 +1,28 @@
+{
+  "name": "fftact",
+  "version": "0.0.1",
+  "description": "Fuzzy Fault Tree Analysis over the Continuous Time",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomasHakkers/FFTACT.git"
+  },
+  "keywords": [
+    "fuzzy",
+    "fault",
+    "tree",
+    "continuous",
+    "time"
+  ],
+  "author": "Thomas Hakkers, Harmjan Kors",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomasHakkers/FFTACT/issues"
+  },
+  "homepage": "https://github.com/ThomasHakkers/FFTACT#readme"
+}
