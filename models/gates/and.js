@@ -12,6 +12,14 @@ class And extends Node {
         this.childs = childs;
     }
 
+    /**
+     * Recursively calls all childs to obtain their expressions
+     * and takes the min values of all of them.
+     * This generates the intersection of all functions.
+     * min(childs.calculate(t) ... )
+     * @param {number} t - Time (unit is defined by user)
+     * @returns {Expression}
+     */
     calculate(t) {
         // TODO Recursively do calculations for each child.
         // TODO Fix array.reduce.
