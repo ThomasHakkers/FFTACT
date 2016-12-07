@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "Fuzzy Fault Tree Analysis over the Continuous Time",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "algebra.js": "^0.2.5"
+  },
   "devDependencies": {},
   "scripts": {
     "start": "node .",
