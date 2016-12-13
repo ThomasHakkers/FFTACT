@@ -4,6 +4,6 @@
  */
 
 module.exports = {
-    username : 'plotly-username',
+    username : 'username',
     apiKey   : 'plotly-apiKey'
 };

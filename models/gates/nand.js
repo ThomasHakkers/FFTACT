@@ -18,11 +18,12 @@ class Nand extends And {
      * This generates the complement of the intersection of all functions.
      * min(childs.calculate(t) ... )
      * @param {number} t - Time (unit is defined by user)
-     * @returns {Expression}
+     * @param {number} y - percentage from 0 : 1
+     *                     (This is the probability that a certain probability will occur on given time t)
+     * @returns {number} z value at given y and t.
      */
-    calculate(t) {
-        // TODO Verify
-        return 1 - super.calculate(t);
+    calculate(y,t) {
+        return 1 - super.calculate(y,t);
     }
 }
 

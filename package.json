@@ -4,7 +4,6 @@
   "description": "Fuzzy Fault Tree Analysis over the Continuous Time",
   "main": "index.js",
   "dependencies": {
-    "algebra.js": "^0.2.5",
     "plotly": "^1.0.6"
   },
   "devDependencies": {},
