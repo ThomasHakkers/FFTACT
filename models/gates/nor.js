@@ -5,6 +5,7 @@ var Or = require('./or.js');
 /**
  * Represents a logical Nor-Gate
  */
+// TODO Fix
 class Nor extends Or {
 
     constructor(childs) {

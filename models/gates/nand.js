@@ -5,6 +5,7 @@ var And = require('./and.js');
 /**
  * Represents a logical Nand-Gate
  */
+// TODO Fix
 class Nand extends And {
 
     constructor(childs) {
