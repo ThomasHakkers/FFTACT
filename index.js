@@ -14,21 +14,22 @@ const rootnode = new Or(
     [   new And( [new BasicEvent(1/2, 1/5), new BasicEvent(1/8, 1/20)] ),
         new And( [new BasicEvent(1/3, 1/10), new BasicEvent(1/12, 1/3)] ) ]
 );
-//
-// /** Simple example with 1 BasicEvent */
-// // const rootnode = new BasicEvent(1/2, 1/4);
-// /** Example with 1 Or gate and BasicEvents */
-// // const rootnode = new Or([new BasicEvent(1/4, 1/2), new BasicEvent(1/2, 1/4)]);
 
-// TODO Refactor properly
+/** Simple example with 1 BasicEvent */
+// const rootnode = new BasicEvent(1/2, 1/4);
+/** Example with 1 Or gate and BasicEvents */
+// const rootnode = new Or([new BasicEvent(1/4, 1/2), new BasicEvent(1/2, 1/4)]);
+
+/**
+ * Simple example that displays the entire 3D graph of the public variable called rootnode.
+ */
 function test3DGraph() {
+    console.log("Warning, this may take a long time (10 minutes) to calculate.");
     let dataPoints = [];
     for(let y = 0; y < 100; y++) {
         let dataRow = [];
         for(let t = 0; t < 100; t++ ){
-            rootnode.calculate(y/100,t/10, result => {
-                dataRow[t] = result;
-            });
+            dataRow[t] = rootnode.calculate(y/100,t/10);
         }
         dataPoints[y] = dataRow;
     }
@@ -51,38 +52,39 @@ function test3DGraph() {
             t: 90
         }
     };
-    let graphOptions = {layout: layout, filename: "new-3d-surface-or-and-02"};
+    let graphOptions = {layout: layout, filename: "3D-Graph-Example"};
     plotly.plot(data, graphOptions, function (err, msg) {
         console.log(msg);
     });
 }
 
-// TODO Refactor properly
+/**
+ * Simple example that shows how the AND and OR gates work on a cross section on t = 2
+ */
 function testCrossSection() {
     const base1 = new BasicEvent(1/2, 1/20);
     const base2 = new BasicEvent(1/4, 1/10);
-    const base3 = new BasicEvent(0, 3/40);
 
     const rootnode = new And([base1,base2]);
     const rootnode2 = new Or([base2,base1]);
 
 
-    var trace1 = {
+    let trace1 = {
         x: [],
         y: [],
         type: "scatter"
     };
-    var trace2 = {
+    let trace2 = {
         x: [],
         y: [],
         type: "scatter"
     };
-    var trace3 = {
+    let trace3 = {
         x: [],
         y: [],
         type: "scatter"
     };
-    var trace4 = {
+    let trace4 = {
         x: [],
         y: [],
         type: "scatter"
@@ -90,26 +92,20 @@ function testCrossSection() {
 
     for(let i = 0; i < 100; i++) {
         trace1.x[i] = i/100;
-        base1.calculate(i/100, 2, result => {
-            trace1.y[i] = result;
-        });
+        trace1.y[i] = base1.calculate(i/100,2);
+
         trace2.x[i] = i/100;
-        base2.calculate(i/100, 2, result => {
-            trace2.y[i] = result;
-        });
+        trace2.y[i] = base2.calculate(i/100,2);
+
         trace3.x[i] = i/100;
-        rootnode.calculate(i/100,2, result => {
-            trace3.y[i] = result;
-        });
+        trace3.y[i] = rootnode.calculate(i/100,2);
+
         trace4.x[i] = i/100;
-        rootnode2.calculate(i/100,2, result => {
-            trace4.y[i] = result;
-        });
+        trace4.y[i] = rootnode2.calculate(i/100,2);
     }
 
-
-    var data = [trace1, trace2, trace3, trace4];
-    var layout = {
+    let data = [trace1, trace2, trace3, trace4];
+    let layout = {
         xaxis: {
             autorange: true
         },
@@ -117,8 +113,12 @@ function testCrossSection() {
             autorange: true
         }
     };
-    var graphOptions = {layout: layout, filename: "plotly-log-axes-2"};
+    let graphOptions = {layout: layout, filename: "Cross-Section-Example"};
     plotly.plot(data, graphOptions, function (err, msg) {
         console.log(msg);
     });
 }
+
+// Run test code here
+test3DGraph();
+// testCrossSection();

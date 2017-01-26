@@ -1,11 +1,10 @@
 "use strict";
 
-var Or = require('./or.js');
+const Or = require('./or.js');
 
 /**
  * Represents a logical Nor-Gate
  */
-// TODO Fix
 class Nor extends Or {
 
     constructor(childs) {
@@ -24,7 +23,7 @@ class Nor extends Or {
      * @returns {number} z value at given y and t.
      */
     calculate(y, t) {
-        return 1 - super.calculate(y, t);
+        return super.calculate(1 - y, t);
     }
 }
 

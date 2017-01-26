@@ -1,11 +1,10 @@
 "use strict";
 
-var And = require('./and.js');
+const And = require('./and.js');
 
 /**
  * Represents a logical Nand-Gate
  */
-// TODO Fix
 class Nand extends And {
 
     constructor(childs) {
@@ -24,7 +23,7 @@ class Nand extends And {
      * @returns {number} z value at given y and t.
      */
     calculate(y,t) {
-        return 1 - super.calculate(y,t);
+        return super.calculate(1 - y,t);
     }
 }
 

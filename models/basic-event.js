@@ -1,6 +1,6 @@
 "use strict";
 
-var Node = require('./node.js');
+const Node = require('./node.js');
 
 class BasicEvent extends Node {
 
@@ -12,13 +12,11 @@ class BasicEvent extends Node {
         this.prefix = 1/Math.sqrt(2*Math.PI * Math.pow(sigma, 2));
     }
 
-    // TODO Rename
-    getMu(t, callback){
-        callback(1 - Math.exp(-(t*this.lambda)));
-    }
-
-    getSigma(callback){
-        callback(this.sigma);
+    calculate(y, t) {
+        // The distribution function over time
+        let distributionFunction = 1 - Math.exp(-(t*this.lambda));
+        // Distribution function combined with normal distribution.
+        return this.prefix * Math.exp(-(Math.pow(( (y - distributionFunction) / this.sigma),2) )/2);
     }
 }
 
